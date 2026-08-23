@@ -1,0 +1,169 @@
+.onesync-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(110, 200, 255, 0.34), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f7fcff 54%, #eaf4ff 100%);
+  pointer-events: none;
+  animation: intro-shell-out 3900ms cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.onesync-intro[hidden],
+.onesync-intro.is-skipped {
+  display: none;
+}
+
+.onesync-intro-stage {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  transform: translateY(-10px);
+}
+
+.onesync-intro-mark {
+  width: min(52vw, 270px);
+  height: min(52vw, 270px);
+  filter: drop-shadow(0 28px 42px rgba(20, 32, 51, .16));
+  overflow: visible;
+}
+
+.intro-core {
+  transform-origin: 90px 90px;
+  opacity: 0;
+  animation: intro-core-in 720ms cubic-bezier(.2, .9, .25, 1.2) 120ms forwards;
+}
+
+.intro-core-glint {
+  fill: #fff;
+  opacity: 0;
+  transform-origin: 90px 90px;
+  animation: intro-glint-in 620ms ease 520ms forwards;
+}
+
+.intro-branch {
+  stroke: #78bfea;
+  stroke-width: 6;
+  stroke-dasharray: 75;
+  stroke-dashoffset: 75;
+  animation: intro-branch-out 760ms cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+.intro-branch-1 { animation-delay: 380ms; }
+.intro-branch-2 { animation-delay: 450ms; }
+.intro-branch-3 { animation-delay: 520ms; }
+.intro-branch-4 { animation-delay: 590ms; stroke: #ff7a1a; }
+.intro-branch-5 { animation-delay: 660ms; }
+.intro-branch-6 { animation-delay: 730ms; }
+.intro-branch-7 { animation-delay: 800ms; }
+.intro-branch-8 { animation-delay: 870ms; }
+
+.intro-node {
+  fill: #2f7cf4;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: intro-node-in 380ms cubic-bezier(.2, .9, .35, 1.25) forwards;
+}
+
+.intro-node-1 { animation-delay: 620ms; }
+.intro-node-2 { animation-delay: 690ms; }
+.intro-node-3 { animation-delay: 760ms; }
+.intro-node-4 { animation-delay: 830ms; fill: #ff7a1a; }
+.intro-node-5 { animation-delay: 900ms; }
+.intro-node-6 { animation-delay: 970ms; }
+.intro-node-7 { animation-delay: 1040ms; }
+.intro-node-8 { animation-delay: 1110ms; }
+
+.intro-orange-orbit {
+  transform-origin: 90px 90px;
+  opacity: 0;
+  animation:
+    intro-orbit-appear 220ms ease 1260ms forwards,
+    intro-orbit-spin 900ms cubic-bezier(.4, 0, .2, 1) 1320ms forwards;
+}
+
+.intro-orange {
+  fill: #ff7a1a;
+  filter: drop-shadow(0 6px 8px rgba(255, 122, 26, .24));
+}
+
+.onesync-intro-name {
+  font-family: var(--font-display, Geist, Inter, Arial, sans-serif);
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: 0;
+  color: #071126;
+  opacity: 0;
+  transform: translateY(10px) scale(.98);
+  animation: intro-name-in 320ms cubic-bezier(.22, 1, .36, 1) 2280ms forwards;
+}
+
+.onesync-intro-line {
+  font-family: var(--font-sans, "DM Sans", Inter, Arial, sans-serif);
+  font-size: clamp(12px, 1.6vw, 16px);
+  font-weight: 750;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #52677f;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: intro-line-in 260ms ease 2420ms forwards;
+}
+
+@keyframes intro-core-in {
+  0% { opacity: 0; transform: scale(.18); }
+  72% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes intro-glint-in {
+  0% { opacity: 0; transform: scale(.2); }
+  100% { opacity: .92; transform: scale(1); }
+}
+
+@keyframes intro-branch-out {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes intro-node-in {
+  0% { opacity: 0; transform: scale(.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes intro-orbit-appear {
+  to { opacity: 1; }
+}
+
+@keyframes intro-orbit-spin {
+  0% { transform: rotate(-42deg); }
+  78% { transform: rotate(318deg); }
+  100% { transform: rotate(405deg); }
+}
+
+@keyframes intro-name-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes intro-line-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes intro-shell-out {
+  0%, 88% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onesync-intro {
+    animation-duration: 1ms;
+  }
+  .onesync-intro *,
+  .intro-orange-orbit {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+  }
+}

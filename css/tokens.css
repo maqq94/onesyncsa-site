@@ -1,0 +1,228 @@
+﻿/* Company Portal - Design Tokens
+   Owner: Qabos / Mohammed Al-Qahtani
+   OneSync direction: baby blue, Gulf orange, white, calm, non-template.
+
+   PALETTE LOCK (D-N-003, 2026-05-21):
+   - Light OneSync palette: baby blue, Gulf orange, white.
+   - No purple, dark navy, or generic admin-template feel.
+
+   STRUCTURAL TOKENS RESTORED (D-N-002, 2026-05-20):
+   - Typography, spacing, motion, layout, pastel-chip tints - restored after the
+     neutral pivot accidentally dropped them. portal.css had 270 references to
+     missing vars. Site was rendering on browser defaults.
+   - Colors now follow the OneSync light blue/orange direction.
+*/
+
+:root {
+  /* ============================================================
+     SURFACES - light OneSync / Gulf palette
+     ============================================================ */
+  --surface-0: #ffffff;
+  --surface-1: #f8fcff;
+  --surface-2: #ffffff;
+  --surface-3: #e8f3f9;
+  --surface-4: #d8edf8;
+
+  /* ============================================================
+     INK
+     ============================================================ */
+  --ink-1: #142033;       /* primary text */
+  --ink-2: #26364f;       /* secondary text */
+  --ink-3: #40516b;       /* muted */
+  --ink-4: #667892;       /* very muted / disabled */
+
+  /* ============================================================
+     ACCENT - OneSync Gulf blue + orange
+     ============================================================ */
+  --accent-primary: #2a6f94;
+  --accent-primary-hover: #1e587a;
+  --accent-secondary: #f37021;
+  --accent-secondary-hover: #c95714;
+  --accent-secondary-soft: rgba(243, 112, 33, 0.13);
+  --focus-ring: rgba(243, 112, 33, 0.72);
+  --focus-halo: rgba(42, 111, 148, 0.18);
+
+  /* Status colors */
+  --accent-sage: #15803d;       /* success / ok */
+  --accent-sage-hover: #0f6b32;
+  --accent-sage-2: #2a6f94;     /* legacy focus/button token */
+  --accent-terracotta: var(--accent-secondary); /* warn */
+  --accent-crimson: #c62828;    /* danger / error */
+  --accent-smoke: #52677f;      /* neutral chip */
+
+  /* Pastel utility chips (subtle backgrounds for badges, alerts, AI panels) */
+  --accent-mint:     #e8f3ec;   /* soft success bg */
+  --accent-rose:     #fbeaea;   /* soft danger bg */
+  --accent-butter:   #fdf3d8;   /* soft warning bg */
+  --accent-sky:      #e6eef9;   /* soft info bg */
+  --accent-lavender: #e8f3f9;   /* legacy AI / smart features bg */
+
+  /* Ink-on-accent (text color used over a colored fill) */
+  --ink-sage:        #ffffff;
+  --ink-terracotta:  #ffffff;
+  --ink-crimson:     #ffffff;
+  --ink-smoke:       #ffffff;
+  --ink-mint:        #1a4d2e;
+  --ink-rose:        #6e1f1f;
+  --ink-butter:      #6b4e09;
+  --ink-sky:         #1a3464;
+  --ink-lavender:    #1a3464;
+  --ink-on-accent:   #ffffff;
+
+  /* ============================================================
+     LINES + DIVIDERS
+     ============================================================ */
+  --line-1: rgba(42, 111, 148, 0.12);
+  --line-2: rgba(42, 111, 148, 0.22);
+  --line-3: rgba(42, 111, 148, 0.34);
+  --line-gold: rgba(243, 112, 33, 0.48); /* legacy decorative line -> orange */
+
+  /* ============================================================
+     SHADOWS
+     ============================================================ */
+  --shadow-1:   0 10px 26px rgba(20, 32, 51, 0.07);
+  --shadow-2:   0 16px 38px rgba(20, 32, 51, 0.10);
+  --shadow-pop: 0 22px 56px rgba(20, 32, 51, 0.16);
+
+  /* ============================================================
+     RADII
+     ============================================================ */
+  --r-xs:   4px;
+  --r-sm:   6px;
+  --r-1:    6px;
+  --r-2:    8px;
+  --r-3:    8px;
+  --r-4:    8px;
+  --r-pill: 999px;
+
+  /* ============================================================
+     SPACING SCALE  (4px base, 8pt rhythm)
+     ============================================================ */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ============================================================
+     TYPOGRAPHY - font families (CDN-loaded in fonts.css)
+     ============================================================ */
+  --font-display: 'Geist', 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-sans:    'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-data:    'Geist', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-arabic:  'SF Arabic', 'Geeza Pro', 'Segoe UI', Tahoma, sans-serif;
+
+  /* Type scale (rem-based, 16px root) */
+  --font-size-xs:   0.75rem;    /* 12px */
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-size-xl:   1.25rem;    /* 20px */
+  --font-size-2xl:  1.5rem;     /* 24px */
+  --font-size-3xl:  2rem;       /* 32px */
+  --font-size-4xl:  2.5rem;     /* 40px */
+  --font-size-5xl:  3.5rem;     /* 56px */
+  --font-sm:        var(--font-size-sm);  /* legacy alias */
+
+  /* Weight */
+  --font-weight-em: 500;
+  --font-weight-h:  600;
+
+  /* Line-height */
+  --line-height-tight:   1.2;
+  --line-height-heading: 1.2;
+  --line-height-body:    1.55;
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --t-fast: 120ms;
+  --t-base: 220ms;
+  --t-slow: 380ms;
+  --ease:   cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  --sidebar-w: 248px;
+  --topbar-h:  56px;
+
+  /* ============================================================
+     COMPONENT TOKENS
+     ============================================================ */
+  --control-h: 40px;
+  --control-h-sm: 32px;
+  --control-pad-x: 14px;
+  --control-bg: rgba(255, 255, 255, 0.88);
+  --control-bg-hover: rgba(42, 111, 148, 0.10);
+  --control-border: rgba(42, 111, 148, 0.24);
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(42, 111, 148, 0.14);
+  --card-border-strong: rgba(42, 111, 148, 0.34);
+  --empty-bg: linear-gradient(135deg, rgba(232, 243, 249, 0.92), rgba(255, 255, 255, 0.96));
+
+  /* ============================================================
+     LEGACY ALIASES - keep every var name old views/CSS use
+     ============================================================ */
+  --bg:        var(--surface-0);
+  --bg-1:      var(--surface-0);
+  --bg-2:      var(--surface-1);
+  --bg-3:      var(--surface-3);
+  --text:      var(--ink-1);
+  --text-dim:  var(--ink-2);
+  --text-mute: var(--ink-3);
+  --line:      var(--line-1);
+  --accent:    var(--accent-primary);
+  --accent-1:  var(--accent-primary);
+  --accent-2:  var(--accent-secondary);
+  --primary:   var(--accent-primary);
+  --danger:    var(--accent-crimson);
+  --warn:      var(--accent-terracotta);
+  --success:   var(--accent-sage);
+  --muted:     var(--ink-3);
+
+  --radius-sm: var(--r-1);
+  --radius-md: var(--r-2);
+  --radius-lg: var(--r-3);
+  --shadow-sm: var(--shadow-1);
+  --shadow-md: var(--shadow-2);
+  --shadow-lg: var(--shadow-pop);
+
+  --color-primary: var(--accent-primary);
+  --color-primary-dark: var(--accent-primary-hover);
+  --color-primary-hover: var(--accent-primary-hover);
+  --color-surface: var(--surface-2);
+  --color-surface-alt: var(--surface-1);
+  --color-border: var(--line-2);
+  --color-text: var(--ink-1);
+  --color-text-muted: var(--ink-4);
+
+  /* Old gold tokens mapped to OneSync blue/orange */
+  --gold-1:   var(--accent-primary);
+  --gold-2:   var(--accent-secondary);
+  --gold-3:   var(--accent-secondary-soft);
+  --gold-ink: #ffffff;
+
+  /* Status surface aliases (used by forms.css/portal.css) */
+  --status-red:  var(--accent-crimson);
+  --surface-info: var(--accent-sky);
+  --ink-info:    var(--ink-sky);
+}
+
+[data-theme="night"] {
+  /* Intentionally empty - dark theme removed with OneSync. Add back here if needed later. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+    --t-base: 0ms;
+    --t-slow: 0ms;
+  }
+}
+

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#EAF4FF" />
+<title>OneSync — Margin Intelligence</title>
+<link rel="icon" type="image/svg+xml" href="brand/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.bunny.net" />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/forms.css" />
+<link rel="stylesheet" href="css/app.css" />
+<link rel="stylesheet" href="css/portal.css" />
+<link rel="stylesheet" href="css/onesync.css" />
+<link rel="stylesheet" href="css/smart-forms.css" />
+<link rel="stylesheet" href="css/brand-intro.css" />
+<link rel="stylesheet" href="onesync-demo.css" />
+</head>
+<body>
+<div class="shell">
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <aside class="sidebar smart-sidebar" id="appSidebar">
+    <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close menu">✕</button>
+    <div class="logo">
+      <img src="brand/onesync-mark-color.svg" alt="OneSync" width="38" height="38" />
+      <div>
+        <div class="brand-name">OneSync</div>
+        <span class="small">Margin intelligence</span>
+      </div>
+    </div>
+
+    <nav aria-label="OneSync navigation">
+      <div class="smart-nav-sections">
+        <details class="smart-nav-section" open>
+          <summary>
+            <span class="nav-summary-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
+            <span class="nav-summary-copy">
+              <strong>Margin Control</strong>
+              <small>your real numbers</small>
+            </span>
+            <span class="nav-summary-count">7</span>
+          </summary>
+          <div class="smart-nav-list">
+            <a class="nav smart-nav-link active" href="#" data-tab="dashboard">
+              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
+              <span class="label">Margin Dashboard</span><small>every item by true margin</small>
+            </a>
+            <a class="nav smart-nav-link" href="#" data-tab="recs">
+              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+              <span class="label">Recommendations</span><small>actions + SAR impact</small>
+            </a>
+            <a class="nav smart-nav-link" href="#" data-tab="alerts">
+              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>
+              <span class="label">Alerts</span><small>leaks and risks</small>
+              <span class="badge" id="alertBadge" hidden></span>
+            </a>
+            <a class="nav smart-nav-link" href="#" data-tab="digest">
+              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span>
+              <span class="label">Weekly Digest</span><small>this week at a glance</small>
+            </a>
+            <a class="nav smart-nav-link" href="#" data-tab="branches">
+              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg></span>
+              <span class="label">Branches</span><small>compare locations</small>
+            </a>
+            <a class="nav smart-nav-link" href="#" data-tab="wastage">
+              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></span>
+              <span class="label">Wastage</span><small>logged waste only</small>
+            </a>
+            <a class="nav smart-nav-link" href="#" data-tab="ai">
+              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></span>
+              <span class="label">AI Copilot</span><small>ask about margins</small>
+            </a>
+          </div>
+        </details>
+      </div>
+    </nav>
+
+    <div class="role-badge">
+      <span class="name" id="connName">Connecting…</span>
+      <span id="connSub">Odoo · read-only</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle navigation">Menu</button>
+      <div class="crumb"><b>OneSync</b> / <span id="crumb">Margin Dashboard</span></div>
+      <form class="search" onsubmit="return false" role="search">
+        <input id="search" placeholder="Search item…" aria-label="Search item" />
+      </form>
+      <div class="user-area">
+        <span class="user-name" id="connDot2">●</span>
+        <span class="user-meta" id="connText">Live Odoo</span>
+        <button class="btn" id="refreshBtn" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <main class="content" id="mainContent" tabindex="-1">
+      <div id="loading" class="empty-text">Reading recipe data from Odoo and pricing every ingredient…</div>
+
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="panel">
+        <section class="today-hero text-flow-ltr">
+          <div class="today-hero-copy">
+            <p class="eyebrow">Margin intelligence</p>
+            <h1 id="heroHead">See your real margins.</h1>
+            <p class="hero-copy" id="heroCopy">OneSync reads the recipe data already in Odoo, prices every ingredient, and shows the true item-level margin — not the ERP's near-zero food cost.</p>
+          </div>
+        </section>
+
+        <section class="kpis" id="kpis"></section>
+
+        <article class="card">
+          <div class="section-heading compact">
+            <div><p class="eyebrow">Menu</p><h2 id="tableTitle">Every item by true margin</h2></div>
+          </div>
+          <div class="bucket-toggle" id="bucketToggle"></div>
+          <p class="bucket-note" id="bucketNote"></p>
+          <div class="table-wrap">
+            <table class="t" id="itemsTable">
+              <thead><tr>
+                <th>Item</th><th>Category</th><th class="num">Price</th>
+                <th class="num">ERP cost</th><th class="num">True cost<br><small>recipe</small></th>
+                <th class="num">True cost<br><small>paid (PO)</small></th>
+                <th class="num sortable" id="driftSort" title="Sort by costing drift">Drift ⇅</th>
+                <th class="num">True food cost</th><th class="num">Margin</th><th>Status</th>
+              </tr></thead>
+              <tbody id="itemsBody"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ALERTS -->
+      <section id="alerts" class="panel hidden">
+        <article class="card">
+          <div class="section-heading compact"><div><p class="eyebrow">Watchlist</p><h2>Alerts</h2></div></div>
+          <div id="alertsList" class="alerts"></div>
+        </article>
+      </section>
+
+      <!-- DIGEST -->
+      <section id="digest" class="panel hidden">
+        <article class="card" style="padding:var(--space-5)">
+          <p class="eyebrow">Weekly digest</p>
+          <h2>This week at a glance</h2>
+          <p class="digest-lead" id="digestLead"></p>
+          <div class="section-heading compact"><div><h2>Biggest margin leaks</h2></div></div>
+          <div class="table-wrap"><table class="t"><tbody id="digestLeaks"></tbody></table></div>
+          <div class="section-heading compact"><div><h2>Food cost by category</h2></div></div>
+          <div class="table-wrap"><table class="t"><tbody id="digestCats"></tbody></table></div>
+        </article>
+      </section>
+
+      <!-- BRANCHES -->
+      <section id="branches" class="panel hidden">
+        <article class="card">
+          <div class="section-heading compact"><div><p class="eyebrow">Network</p><h2>Branch comparison</h2></div></div>
+          <div class="table-wrap">
+            <table class="t">
+              <thead><tr><th>Branch</th><th class="num">Orders</th><th class="num">Sales (SAR)</th><th class="num">Avg ticket</th><th>Flag</th></tr></thead>
+              <tbody id="branchBody"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- WASTAGE — real logged entries only (Task 3) -->
+      <section id="wastage" class="panel hidden">
+        <section class="rec-headline" id="wasteHeadline"></section>
+        <div id="wasteBody"></div>
+      </section>
+
+      <!-- AI COPILOT -->
+      <section id="ai" class="panel hidden">
+        <article class="card ai-card">
+          <div class="section-heading compact">
+            <div><p class="eyebrow">Intelligence</p><h2>OneSync Copilot</h2></div>
+            <span class="chip">local AI · <span id="aiModel">…</span></span>
+          </div>
+          <div id="aiThread" class="ai-thread">
+            <div class="ai-msg bot">Hi — I can see your live Odoo margins. Ask me anything, like the ones below.</div>
+          </div>
+          <div class="ai-chips" id="aiChips"></div>
+          <form id="aiForm" class="ai-input">
+            <input id="aiQ" placeholder="e.g. Which 5 items lose the most money?" autocomplete="off" />
+            <button class="btn btn-primary" id="aiSend" type="submit">Ask</button>
+          </form>
+        </article>
+      </section>
+
+      <!-- RECOMMENDATIONS (v2 prescriptive engine) -->
+      <section id="recs" class="panel hidden">
+        <section class="rec-headline" id="recHeadline"></section>
+        <div class="rec-filter" id="recFilter"></div>
+        <div class="rec-list" id="recList"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer class="app-foot"><span id="footMeta"></span><span>OneSync — see your real margins before they cost you. Demo · live Odoo, read-only.</span></footer>
+<script src="app.js"></script>
+</body>
+</html>

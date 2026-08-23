@@ -1,0 +1,60 @@
+﻿/* OneSync font stack
+   Self-host upgrade path: drop WOFF2 files into /public/fonts/ and replace
+   the @import URLs with @font-face blocks pointing to those files.
+   Reference: docs/DESIGN.md
+
+   Decision log (2026-05-19):
+   - Fraunces + DM Sans: Google Fonts CDN (fast, well-cached globally).
+   - Geist: Bunny Fonts CDN (privacy-respecting, GDPR-friendly alternative).
+     Geist is not available on Google Fonts. If Bunny Fonts is unreachable,
+     the --font-data fallback chain in tokens.css (ui-monospace, system-ui)
+     covers data cells gracefully.
+   - GE SS Two (Arabic): NOT available on any public CDN. Requires a Saudi font
+     license + self-hosting. See /public/fonts/README.txt when acquired.
+     The fallback chain "SF Arabic", "Geeza Pro", "Tahoma" in tokens.css
+     handles Arabic text in dev and for unlicensed deployments.
+
+   Performance note: preconnect hints are added in layout.ejs and login.ejs
+   so the browser opens the TCP/TLS connections before this CSS is parsed.
+*/
+
+/* ------------------------------------------------------------------ */
+/* 1. Fraunces - display serif (variable, optical size 9"144)          */
+/* ------------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap');
+
+/* ------------------------------------------------------------------ */
+/* 2. DM Sans - body humanist sans                                     */
+/* ------------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+
+/* ------------------------------------------------------------------ */
+/* 3. Geist - data / tabular numbers (Bunny Fonts, privacy CDN)        */
+/* ------------------------------------------------------------------ */
+@import url('https://fonts.bunny.net/css?family=geist:400,500&display=swap');
+
+/* ------------------------------------------------------------------ */
+/* 4. GE SS Two - Arabic (self-host required; fallback active for now) */
+/* ------------------------------------------------------------------ */
+/*
+   When the WOFF2 file is acquired under Saudi font licensing, replace
+   this comment block with:
+
+   @font-face {
+     font-family: 'GE SS Two';
+     src: url('/public/fonts/GESSTwo-Regular.woff2') format('woff2');
+     font-weight: 400;
+     font-style: normal;
+     font-display: swap;
+   }
+   @font-face {
+     font-family: 'GE SS Two';
+     src: url('/public/fonts/GESSTwo-Bold.woff2') format('woff2');
+     font-weight: 700;
+     font-style: normal;
+     font-display: swap;
+   }
+
+   Then update --font-arabic in tokens.css to list 'GE SS Two' first.
+*/
+

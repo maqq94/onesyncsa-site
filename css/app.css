@@ -1,0 +1,415 @@
+/* App-level polish loaded before portal.css. */
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body .card .card-title,
+body .page-title h1 {
+  letter-spacing: 0 !important;
+}
+
+body .content {
+  padding-left: clamp(14px, 3vw, 32px) !important;
+  padding-right: clamp(14px, 3vw, 32px) !important;
+}
+
+body button:not(.lang-btn),
+body .btn {
+  min-height: var(--control-h, 40px) !important;
+  min-width: var(--control-h, 40px);
+  padding: 9px var(--control-pad-x, 14px) !important;
+  border-radius: var(--r-2, 8px) !important;
+  border-color: var(--control-border, var(--line-2)) !important;
+  background: var(--control-bg, var(--surface-2)) !important;
+  color: var(--ink-1) !important;
+  line-height: 1.15;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+body button:not(.lang-btn):hover,
+body .btn:hover {
+  background: var(--control-bg-hover, var(--surface-3)) !important;
+  border-color: var(--accent-primary, var(--accent)) !important;
+  color: var(--accent-primary-hover, var(--accent)) !important;
+}
+
+body button[type="submit"]:not(.lang-btn),
+body .btn-primary,
+body .fab-send,
+body #ai-fab-send {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-hover)) !important;
+  border-color: var(--accent-primary-hover) !important;
+  color: var(--ink-on-accent) !important;
+  box-shadow: 0 10px 22px var(--focus-halo, rgba(42, 111, 148, 0.18)) !important;
+}
+
+body .btn-warning,
+body .lang-active {
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-secondary-hover, var(--accent-secondary))) !important;
+  border-color: var(--accent-secondary) !important;
+  color: var(--ink-on-accent) !important;
+}
+
+body .btn-sm {
+  min-height: var(--control-h-sm, 32px) !important;
+  min-width: var(--control-h-sm, 32px);
+  padding: 5px 10px !important;
+}
+
+body input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+body select,
+body textarea,
+body .topbar .search input,
+body .field input {
+  min-height: var(--control-h, 40px);
+  border-radius: var(--r-2, 8px) !important;
+  border-color: var(--control-border, var(--line-2)) !important;
+  background: var(--control-bg, var(--surface-2)) !important;
+  color: var(--ink-1) !important;
+}
+
+body input::placeholder,
+body textarea::placeholder {
+  color: var(--ink-4);
+  opacity: 1;
+}
+
+body button:focus-visible,
+body .btn:focus-visible,
+body a:focus-visible,
+body input:focus-visible,
+body select:focus-visible,
+body textarea:focus-visible,
+body [tabindex]:focus-visible {
+  outline: 3px solid var(--focus-ring, var(--accent-secondary)) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px var(--focus-halo, rgba(42, 111, 148, 0.18)) !important;
+}
+
+body .card,
+body .kpi,
+body .sub-card,
+body .bento-tile,
+body .onesync-today-tile,
+body .hero-panel,
+body .login-card,
+body .error-card,
+body .ov-card {
+  background: var(--card-bg, var(--surface-2)) !important;
+  border-color: var(--card-border, var(--line-1)) !important;
+  border-radius: var(--r-2, 8px) !important;
+  box-shadow: var(--shadow-1) !important;
+}
+
+body .kpi,
+body .quick-card,
+body .command-tile {
+  min-height: 96px;
+}
+
+body .card:hover,
+body .kpi:hover,
+body .sub-card:hover,
+body .bento-tile:hover,
+body .ov-card:hover {
+  border-color: var(--accent-secondary, var(--accent-2)) !important;
+  box-shadow: var(--shadow-2) !important;
+}
+
+body .empty,
+body .list-row.empty,
+body .empty-mascot,
+body .list-card-rich .empty-mascot {
+  padding: var(--space-6) var(--space-4) !important;
+  background: var(--empty-bg) !important;
+  border: 1px solid var(--card-border, var(--line-1));
+  border-radius: var(--r-2, 8px);
+  color: var(--ink-3);
+}
+
+body .empty h2,
+body .empty h3,
+body .empty-mascot-title,
+body .list-row.empty h3 {
+  color: var(--ink-1) !important;
+  font-family: var(--font-display);
+}
+
+body .empty-mascot-rosette,
+body .empty-mascot {
+  color: var(--accent-secondary, var(--accent-2)) !important;
+}
+
+body table.t,
+body .fc-table,
+body .pc-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+body .t thead th,
+body .fc-table th,
+body .pc-table th {
+  background: var(--surface-3) !important;
+  color: var(--ink-2) !important;
+  border-bottom-color: var(--line-2) !important;
+}
+
+body .t tbody tr:hover {
+  background: rgba(42, 111, 148, 0.06) !important;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 375px audit fixes
+   ============================================================ */
+
+/* 1. Generic table overflow — any bare <table> inside .content */
+.content table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* 2. Admin perf tables (.pf-tbl) */
+.pf-section {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.pf-tbl {
+  min-width: 480px;
+}
+
+/* 3. Forms-catalog table (.fc-table) */
+.fc-table {
+  min-width: 400px;
+}
+
+/* 4. Plugins-catalog table (.pc-table) */
+.pc-table {
+  min-width: 400px;
+}
+
+/* 5. KPI grid — wrap on narrow screens */
+.kpi-grid,
+.kpi-compliance-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.kpi-grid .kpi,
+.kpi-compliance-row .kpi {
+  flex: 1 1 140px;
+  min-width: 130px;
+}
+
+/* 6. Command grid — stack on mobile */
+.command-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* 7. Overview grid (.ov-grid) */
+.ov-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.ov-grid > * {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+/* 8. Topbar search shrinks on narrow screens */
+@media (max-width: 480px) {
+  body h1,
+  body .page-title h1 {
+    font-size: var(--font-size-2xl) !important;
+    line-height: 1.18;
+  }
+
+  body h2 {
+    font-size: var(--font-size-xl) !important;
+  }
+
+  body h3,
+  body .card .card-title {
+    font-size: var(--font-size-lg) !important;
+  }
+
+  body .content {
+    padding-top: 18px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .topbar .search {
+    display: block;
+    flex: 1 1 120px;
+    min-width: 118px;
+    max-width: 42vw;
+  }
+  .topbar .lang-switcher {
+    display: flex;
+    margin: 0;
+  }
+  .topbar .search input {
+    min-height: 34px;
+    padding: 0.45rem 0.55rem;
+  }
+  .user-meta {
+    display: none;
+  }
+}
+
+.sidebar .logo a {
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.sidebar .logo a:hover {
+  text-decoration: none;
+}
+
+.sidebar a.nav::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line-2);
+  flex: 0 0 6px;
+  box-shadow: 0 0 0 3px rgba(91, 141, 239, 0);
+}
+
+.sidebar a.nav.active::before,
+.sidebar a.nav:hover::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(91, 141, 239, 0.14);
+}
+
+.topbar {
+  backdrop-filter: blur(14px);
+}
+
+.content {
+  margin: 0 auto;
+}
+
+.card,
+.kpi {
+  transition: border-color 0.14s, transform 0.14s, box-shadow 0.14s;
+}
+
+a.card:hover,
+.sub-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-2);
+}
+
+.hero-panel {
+  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.hero-panel h1,
+.hero-panel h2 {
+  margin-bottom: 4px;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.quick-card {
+  min-height: 120px;
+}
+
+.owner-brief {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.4fr) minmax(260px, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.owner-brief .eyebrow {
+  color: var(--text-mute);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.owner-brief .brief-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.owner-brief .brief-copy {
+  color: var(--text-dim);
+  margin-top: 8px;
+  max-width: 680px;
+}
+
+.command-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.command-tile {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 74px;
+}
+
+.command-tile .label {
+  color: var(--text-mute);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.command-tile .value {
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-top: 6px;
+}
+
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .owner-brief {
+    grid-template-columns: 1fr;
+  }
+}

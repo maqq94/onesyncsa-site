@@ -1,0 +1,115 @@
+/* Company Portal — Utility Classes
+   Owner: theme-customizer-agent
+   Reads tokens from tokens.css. Pure CSS, no JS. */
+
+@import "./tokens.css";
+
+/* ── Reset baseline ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  font-size:   var(--font-size-base);
+  color:       var(--color-text);
+  background:  var(--color-bg);
+  margin: 0;
+}
+
+/* ── Container ── */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* ── Card ── */
+.card {
+  background:    var(--color-surface);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding:       var(--space-5);
+}
+
+/* ── KPI block ── */
+.kpi {
+  background:    var(--color-surface);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding:       var(--space-4) var(--space-5);
+  text-align:    center;
+}
+.kpi .kpi-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.kpi .kpi-label {
+  font-size:  var(--font-size-sm);
+  color:      var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* ── Buttons ── */
+.btn {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           var(--space-2);
+  padding:       var(--space-2) var(--space-4);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size:     var(--font-size-sm);
+  font-family:   var(--font-sans);
+  background:    var(--color-surface);
+  color:         var(--color-text);
+  cursor:        pointer;
+  text-decoration: none;
+  line-height:   1.4;
+  min-height:    40px;
+}
+.btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.btn-primary {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           var(--space-2);
+  padding:       var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size:     var(--font-size-sm);
+  font-family:   var(--font-sans);
+  cursor:        pointer;
+  text-decoration: none;
+  line-height:   1.4;
+  min-height:    40px;
+  background:    var(--color-primary);
+  border:        1px solid var(--color-primary);
+  color:         var(--surface-0);
+}
+.btn-primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); color: var(--surface-0); }
+
+/* ── Table ── */
+.t-wrap { overflow-x: auto; }
+.t { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
+.t th, .t td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); text-align: left; }
+.t th { background: var(--color-bg); font-weight: 600; color: var(--color-text-muted); }
+.t tbody tr:nth-child(even) { background: var(--color-bg); }
+.t tbody tr:hover { background: var(--color-bg); }
+
+/* ── Status badges ── */
+.warn { color: var(--color-warn); font-weight: 600; }
+.err  { color: var(--color-danger); font-weight: 600; }
+.ok   { color: var(--color-success); font-weight: 600; }
+
+/* ── Responsive cards grid ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+/* ── Sidebar scroll ── */
+.sidebar { overflow-y: auto; height: 100vh; }
+
+@media (max-width: 600px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .card, .kpi { padding: var(--space-4); }
+}
