@@ -1,209 +1,528 @@
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#EAF4FF" />
-<title>OneSync — Margin Intelligence</title>
-<link rel="icon" type="image/svg+xml" href="brand/favicon.svg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://fonts.bunny.net" />
-<link rel="stylesheet" href="css/fonts.css" />
-<link rel="stylesheet" href="css/tokens.css" />
-<link rel="stylesheet" href="css/forms.css" />
-<link rel="stylesheet" href="css/app.css" />
-<link rel="stylesheet" href="css/portal.css" />
-<link rel="stylesheet" href="css/onesync.css" />
-<link rel="stylesheet" href="css/smart-forms.css" />
-<link rel="stylesheet" href="css/brand-intro.css" />
-<link rel="stylesheet" href="onesync-demo.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OneSync — One Place. Everything Synced.</title>
+<meta name="description" content="OneSync gives every business one place where all its systems, people, and numbers stay in sync — in Arabic and English, built for Saudi Arabia first.">
+<meta name="theme-color" content="#2C74BA">
+<meta name="robots" content="noindex, nofollow">
+<!-- DRAFT — internal review copy. Remove the noindex line above before this is ever published. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Ccircle cx='48' cy='48' r='46' fill='%232C74BA'/%3E%3Ccircle cx='48' cy='48' r='17' fill='%23fff'/%3E%3Ccircle cx='48' cy='48' r='13' fill='%232C74BA'/%3E%3Ccircle cx='67.8' cy='67.8' r='6.5' fill='%23F37021'/%3E%3C/svg%3E">
+<meta property="og:title" content="OneSync — One Place. Everything Synced.">
+<meta property="og:description" content="One place where all of a business's systems, people, and numbers stay in sync — in Arabic and English, built for Saudi Arabia first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     OneSync Design Tokens — copied from brand_atomic_system/agent/
+     visual/colors_and_type.css (current production source of truth,
+     2026-08-11 guideline + 2026-08-21 font-pair update). Inlined here
+     because this page is self-contained by design.
+     ============================================================ */
+  :root {
+    --color-primary: #2C74BA;
+    --color-primary-hover: #235C95;
+    --color-action: #F37021;
+    --color-action-hover: #B9470A;
+
+    --color-text-primary: #142033;
+    --color-text-secondary: #26364f;
+    --color-text-support: #40516b;
+    --color-text-muted: #667892;
+
+    --color-bg-card: #ffffff;
+    --color-bg: #F7F8FA;
+    --color-bg-app: #EDEFF2;
+    --tint-1: #D8EDF8;
+    --tint-2: #E8F3F9;
+    --tint-3: #F5FBFE;
+
+    /* Headings/display use IBM Plex Sans Arabic per the current fonts.yaml
+       ("Headings, display and Arabic"); body uses Tajawal. Both carry Latin
+       and Arabic glyphs, so one pair serves both languages equally. */
+    --font-display: "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
+    --font-body: "Tajawal", system-ui, -apple-system, sans-serif;
+
+    /* Type scale (px): 12, 14, 16, 20, 24, 32, 48, 64 — no sizes outside this scale. */
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 20px;
+    --text-xl: 24px;
+    --text-2xl: 32px;
+    --text-3xl: 48px;
+    --text-4xl: 64px;
+
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 32px;
+    --space-5: 48px;
+    --space-6: 64px;
+    --space-7: 96px;
+
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Motion tokens — brand_atomic_system/agent/visual/motion/motion.css */
+    --motion-quick: 150ms;
+    --motion-standard: 200ms;
+    --motion-intro: 600ms;
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root { --motion-quick: 0ms; --motion-standard: 0ms; --motion-intro: 0ms; }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; margin: 0 0 var(--space-2); color: var(--color-text-primary); }
+  p { margin: 0 0 var(--space-2); color: var(--color-text-support); }
+  a { color: var(--color-primary); }
+
+  img, svg { max-width: 100%; }
+
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; z-index: 1000;
+    background: var(--color-primary); color: #fff; padding: var(--space-1) var(--space-2);
+    border-radius: 0 0 var(--radius-sm) 0;
+  }
+  .skip-link:focus { left: 0; }
+
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+  /* ---------- Language blocks ---------- */
+  .lang-ar { display: none; font-family: var(--font-body); }
+  body[data-lang="ar"] .lang-en { display: none; }
+  body[data-lang="ar"] .lang-ar { display: block; }
+  .lang-ar h1, .lang-ar h2, .lang-ar h3 { font-family: var(--font-display); }
+
+  /* ---------- Layout helpers ---------- */
+  .section { padding: var(--space-7) var(--space-2); }
+  .band { background: var(--color-bg-app); }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: var(--space-1);
+    color: var(--color-primary); font-weight: 600; font-size: var(--text-sm);
+    margin: 0 0 var(--space-1);
+  }
+  .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--color-action); flex: none; }
+  .lang-ar .eyebrow::before { order: 2; }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(247, 248, 250, 0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--tint-1);
+  }
+  .header-inner {
+    max-width: 1200px; margin: 0 auto; padding: var(--space-2);
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  }
+  .logo-lockup { display: flex; align-items: center; gap: var(--space-1); text-decoration: none; flex: none; }
+  .logo-lockup .mark { width: 34px; height: 34px; }
+  .logo-lockup .wordmark {
+    font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg);
+    color: var(--color-primary); letter-spacing: -0.02em;
+  }
+  .primary-nav { display: flex; gap: var(--space-3); flex: 1; justify-content: center; }
+  .primary-nav a { color: var(--color-text-secondary); text-decoration: none; font-weight: 500; font-size: var(--text-base); }
+  .primary-nav a:hover { color: var(--color-primary); }
+  .header-actions { flex: none; }
+
+  .lang-toggle {
+    font-family: var(--font-body); font-weight: 600; font-size: var(--text-sm);
+    background: #fff; color: var(--color-primary); border: 1px solid var(--tint-1);
+    border-radius: var(--radius-md); padding: 10px 16px; cursor: pointer;
+    transition: background var(--motion-quick) var(--ease-standard), border-color var(--motion-quick) var(--ease-standard);
+  }
+  .lang-toggle:hover { background: var(--tint-3); border-color: var(--color-primary); }
+
+  @media (max-width: 760px) {
+    .primary-nav { display: none; }
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--font-body); font-weight: 600; font-size: var(--text-base);
+    padding: 13px 24px; border-radius: var(--radius-md); text-decoration: none;
+    border: 1px solid transparent; cursor: pointer;
+    transition: background var(--motion-quick) var(--ease-standard), border-color var(--motion-quick) var(--ease-standard), color var(--motion-quick) var(--ease-standard);
+  }
+  .btn-action { background: var(--color-action); color: #fff; }
+  .btn-action:hover { background: var(--color-action-hover); }
+  .btn-quiet { background: var(--tint-1); color: var(--color-primary); border-color: var(--tint-1); }
+  .btn-quiet:hover { background: #fff; border-color: var(--color-primary); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: var(--space-6) var(--space-2) var(--space-7); }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-6); align-items: center;
+  }
+  .hero h1 { font-size: var(--text-4xl); }
+  .hero .lead { font-size: var(--text-lg); color: var(--color-text-support); max-width: 46ch; }
+  .hero-visual { display: flex; justify-content: center; }
+  .hero-mark { width: min(70%, 320px); height: auto; }
+  .mark-caption { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--color-text-muted); text-align: center; max-width: 320px; }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; }
+    .hero-mark { width: 180px; }
+    .hero h1 { font-size: var(--text-3xl); }
+  }
+
+  /* Sun-mark intro animation — the ONE decorative animation, per motion.json,
+     played once on load: rays draw out, dots settle into orbit. */
+  .hero-mark .ray { stroke-dasharray: 40; stroke-dashoffset: 40; animation: ray-out var(--motion-intro) var(--ease-enter) forwards; }
+  .hero-mark .ray-action { animation-delay: 80ms; }
+  .hero-mark .dot { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.3); animation: dot-in var(--motion-intro) var(--ease-enter) forwards; }
+  .hero-mark .dot:nth-of-type(1) { animation-delay: 260ms; }
+  .hero-mark .dot:nth-of-type(2) { animation-delay: 310ms; }
+  .hero-mark .dot:nth-of-type(3) { animation-delay: 360ms; }
+  .hero-mark .dot:nth-of-type(4) { animation-delay: 410ms; }
+  .hero-mark .dot:nth-of-type(5) { animation-delay: 460ms; }
+  .hero-mark .dot:nth-of-type(6) { animation-delay: 510ms; }
+  .hero-mark .dot:nth-of-type(7) { animation-delay: 560ms; }
+  .hero-mark .core-outer { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.4); animation: core-in var(--motion-intro) var(--ease-enter) 120ms forwards; }
+  .hero-mark .core-inner { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.4); animation: core-in var(--motion-intro) var(--ease-enter) 180ms forwards; }
+  @keyframes ray-out { to { stroke-dashoffset: 0; } }
+  @keyframes dot-in { to { opacity: 1; transform: scale(1); } }
+  @keyframes core-in { to { opacity: 1; transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-mark .ray, .hero-mark .dot, .hero-mark .core-outer, .hero-mark .core-inner {
+      animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; transform: none !important;
+    }
+  }
+
+  /* ---------- Card grid ---------- */
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-top: var(--space-4); }
+  @media (max-width: 900px) { .card-grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--color-bg-card); border-radius: var(--radius-lg); padding: var(--space-3);
+    box-shadow: 0 1px 2px rgba(20,32,51,.06), 0 8px 24px rgba(20,32,51,.05);
+    display: flex; flex-direction: column;
+  }
+  .card h3 { font-size: var(--text-xl); margin-bottom: var(--space-1); }
+  .card p { margin-bottom: var(--space-2); }
+  .card .card-link { font-weight: 600; text-decoration: none; margin-top: auto; }
+  .card .card-link:hover { text-decoration: underline; }
+
+  .roadmap-note {
+    margin-top: var(--space-4); padding: var(--space-2) var(--space-3);
+    background: var(--tint-3); border-inline-start: 3px solid var(--color-primary);
+    border-radius: var(--radius-sm); color: var(--color-text-support); font-size: var(--text-sm);
+  }
+  .roadmap-note strong { color: var(--color-text-primary); }
+
+  /* ---------- Differentiation ---------- */
+  .diff-list { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: grid; gap: var(--space-3); }
+  .diff-list li { display: grid; grid-template-columns: 40px 1fr; gap: var(--space-2); align-items: start; }
+  .diff-num {
+    width: 40px; height: 40px; border-radius: 999px; background: var(--tint-1); color: var(--color-primary);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--text-base);
+  }
+  .diff-list h3 { font-size: var(--text-lg); margin-bottom: 4px; }
+  .diff-list p { margin-bottom: 0; }
+  .position-line {
+    font-size: var(--text-2xl); max-width: 22ch;
+  }
+  [dir="ltr"] span.embed, [lang="ar"] span.embed { unicode-bidi: isolate; }
+
+  /* ---------- Contact ---------- */
+  .cta-section h2 { font-size: var(--text-3xl); max-width: 20ch; }
+  .contact-meta { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .contact-meta a { color: var(--color-text-muted); text-decoration: underline; }
+
+  /* ---------- Footer ---------- */
+  .site-footer { border-top: 1px solid var(--tint-1); padding: var(--space-4) var(--space-2); }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap;
+    align-items: center; justify-content: space-between; gap: var(--space-2);
+  }
+  .footer-brand { display: flex; align-items: center; gap: var(--space-1); font-weight: 600; color: var(--color-text-secondary); }
+  .footer-brand .mark { width: 22px; height: 22px; }
+  .footer-meta { font-size: var(--text-xs); color: var(--color-text-muted); margin: 0; }
+  .footer-links a { color: var(--color-text-muted); font-size: var(--text-sm); text-decoration: none; margin-inline-start: var(--space-2); }
+  .footer-links a:hover { color: var(--color-primary); }
+</style>
 </head>
-<body>
-<div class="shell">
-  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<body data-lang="en">
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <aside class="sidebar smart-sidebar" id="appSidebar">
-    <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close menu">✕</button>
-    <div class="logo">
-      <img src="brand/onesync-mark-color.svg" alt="OneSync" width="38" height="38" />
-      <div>
-        <div class="brand-name">OneSync</div>
-        <span class="small">Margin intelligence</span>
-      </div>
-    </div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo-lockup" href="#top" aria-label="OneSync — home">
+      <svg class="mark" viewBox="0 0 96 96" role="img" aria-hidden="true">
+        <g stroke="#2C74BA" stroke-width="3.4" fill="none">
+          <path d="M48 48V20M48 48l19.8-19.8M48 48h28M48 48v28M48 48L28.2 67.8M48 48H20M48 48L28.2 28.2"></path>
+        </g>
+        <path d="M48 48l19.8 19.8" stroke="#F37021" stroke-width="4" fill="none"></path>
+        <circle cx="48" cy="48" r="16.2" fill="#ffffff"></circle>
+        <circle cx="48" cy="48" r="12.6" fill="#2C74BA"></circle>
+        <g fill="#2C74BA">
+          <circle cx="48" cy="20" r="4.4"></circle>
+          <circle cx="67.8" cy="28.2" r="4.4"></circle>
+          <circle cx="76" cy="48" r="4.4"></circle>
+          <circle cx="48" cy="76" r="4.4"></circle>
+          <circle cx="28.2" cy="67.8" r="4.4"></circle>
+          <circle cx="20" cy="48" r="4.4"></circle>
+          <circle cx="28.2" cy="28.2" r="4.4"></circle>
+        </g>
+        <circle cx="67.8" cy="67.8" r="4.8" fill="#F37021"></circle>
+      </svg>
+      <!-- Name rule (positioning.md): Latin "OneSync" stays in logos/headers in
+           Arabic contexts too — Arabic wordmark ون سينك is used in body copy only. -->
+      <span class="wordmark">OneSync</span>
+    </a>
 
-    <nav aria-label="OneSync navigation">
-      <div class="smart-nav-sections">
-        <details class="smart-nav-section" open>
-          <summary>
-            <span class="nav-summary-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
-            <span class="nav-summary-copy">
-              <strong>Margin Control</strong>
-              <small>your real numbers</small>
-            </span>
-            <span class="nav-summary-count">7</span>
-          </summary>
-          <div class="smart-nav-list">
-            <a class="nav smart-nav-link active" href="#" data-tab="dashboard">
-              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
-              <span class="label">Margin Dashboard</span><small>every item by true margin</small>
-            </a>
-            <a class="nav smart-nav-link" href="#" data-tab="recs">
-              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-              <span class="label">Recommendations</span><small>actions + SAR impact</small>
-            </a>
-            <a class="nav smart-nav-link" href="#" data-tab="alerts">
-              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>
-              <span class="label">Alerts</span><small>leaks and risks</small>
-              <span class="badge" id="alertBadge" hidden></span>
-            </a>
-            <a class="nav smart-nav-link" href="#" data-tab="digest">
-              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span>
-              <span class="label">Weekly Digest</span><small>this week at a glance</small>
-            </a>
-            <a class="nav smart-nav-link" href="#" data-tab="branches">
-              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg></span>
-              <span class="label">Branches</span><small>compare locations</small>
-            </a>
-            <a class="nav smart-nav-link" href="#" data-tab="wastage">
-              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></span>
-              <span class="label">Wastage</span><small>logged waste only</small>
-            </a>
-            <a class="nav smart-nav-link" href="#" data-tab="ai">
-              <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></span>
-              <span class="label">AI Copilot</span><small>ask about margins</small>
-            </a>
-          </div>
-        </details>
-      </div>
+    <nav class="primary-nav" aria-label="Primary">
+      <span class="lang-en"><a href="#offerings">What it does</a></span>
+      <span class="lang-ar" dir="rtl" lang="ar"><a href="#offerings">ما نقدّمه</a></span>
+      <span class="lang-en"><a href="#differentiation">Why OneSync</a></span>
+      <span class="lang-ar" dir="rtl" lang="ar"><a href="#differentiation">لماذا ون سينك</a></span>
+      <span class="lang-en"><a href="demo.html">See it in action</a></span>
+      <span class="lang-ar" dir="rtl" lang="ar"><a href="demo.html">شاهدها عمليًا</a></span>
+      <span class="lang-en"><a href="#contact">Contact</a></span>
+      <span class="lang-ar" dir="rtl" lang="ar"><a href="#contact">تواصل معنا</a></span>
     </nav>
 
-    <div class="role-badge">
-      <span class="name" id="connName">Connecting…</span>
-      <span id="connSub">Odoo · read-only</span>
+    <div class="header-actions">
+      <button id="langToggle" class="lang-toggle" type="button" aria-pressed="false">العربية</button>
     </div>
-  </aside>
-
-  <div class="main">
-    <header class="topbar">
-      <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle navigation">Menu</button>
-      <div class="crumb"><b>OneSync</b> / <span id="crumb">Margin Dashboard</span></div>
-      <form class="search" onsubmit="return false" role="search">
-        <input id="search" placeholder="Search item…" aria-label="Search item" />
-      </form>
-      <div class="user-area">
-        <span class="user-name" id="connDot2">●</span>
-        <span class="user-meta" id="connText">Live Odoo</span>
-        <button class="btn" id="refreshBtn" type="button">Refresh</button>
-      </div>
-    </header>
-
-    <main class="content" id="mainContent" tabindex="-1">
-      <div id="loading" class="empty-text">Reading recipe data from Odoo and pricing every ingredient…</div>
-
-      <!-- DASHBOARD -->
-      <section id="dashboard" class="panel">
-        <section class="today-hero text-flow-ltr">
-          <div class="today-hero-copy">
-            <p class="eyebrow">Margin intelligence</p>
-            <h1 id="heroHead">See your real margins.</h1>
-            <p class="hero-copy" id="heroCopy">OneSync reads the recipe data already in Odoo, prices every ingredient, and shows the true item-level margin — not the ERP's near-zero food cost.</p>
-          </div>
-        </section>
-
-        <section class="kpis" id="kpis"></section>
-
-        <article class="card">
-          <div class="section-heading compact">
-            <div><p class="eyebrow">Menu</p><h2 id="tableTitle">Every item by true margin</h2></div>
-          </div>
-          <div class="bucket-toggle" id="bucketToggle"></div>
-          <p class="bucket-note" id="bucketNote"></p>
-          <div class="table-wrap">
-            <table class="t" id="itemsTable">
-              <thead><tr>
-                <th>Item</th><th>Category</th><th class="num">Price</th>
-                <th class="num">ERP cost</th><th class="num">True cost<br><small>recipe</small></th>
-                <th class="num">True cost<br><small>paid (PO)</small></th>
-                <th class="num sortable" id="driftSort" title="Sort by costing drift">Drift ⇅</th>
-                <th class="num">True food cost</th><th class="num">Margin</th><th>Status</th>
-              </tr></thead>
-              <tbody id="itemsBody"></tbody>
-            </table>
-          </div>
-        </article>
-      </section>
-
-      <!-- ALERTS -->
-      <section id="alerts" class="panel hidden">
-        <article class="card">
-          <div class="section-heading compact"><div><p class="eyebrow">Watchlist</p><h2>Alerts</h2></div></div>
-          <div id="alertsList" class="alerts"></div>
-        </article>
-      </section>
-
-      <!-- DIGEST -->
-      <section id="digest" class="panel hidden">
-        <article class="card" style="padding:var(--space-5)">
-          <p class="eyebrow">Weekly digest</p>
-          <h2>This week at a glance</h2>
-          <p class="digest-lead" id="digestLead"></p>
-          <div class="section-heading compact"><div><h2>Biggest margin leaks</h2></div></div>
-          <div class="table-wrap"><table class="t"><tbody id="digestLeaks"></tbody></table></div>
-          <div class="section-heading compact"><div><h2>Food cost by category</h2></div></div>
-          <div class="table-wrap"><table class="t"><tbody id="digestCats"></tbody></table></div>
-        </article>
-      </section>
-
-      <!-- BRANCHES -->
-      <section id="branches" class="panel hidden">
-        <article class="card">
-          <div class="section-heading compact"><div><p class="eyebrow">Network</p><h2>Branch comparison</h2></div></div>
-          <div class="table-wrap">
-            <table class="t">
-              <thead><tr><th>Branch</th><th class="num">Orders</th><th class="num">Sales (SAR)</th><th class="num">Avg ticket</th><th>Flag</th></tr></thead>
-              <tbody id="branchBody"></tbody>
-            </table>
-          </div>
-        </article>
-      </section>
-
-      <!-- WASTAGE — real logged entries only (Task 3) -->
-      <section id="wastage" class="panel hidden">
-        <section class="rec-headline" id="wasteHeadline"></section>
-        <div id="wasteBody"></div>
-      </section>
-
-      <!-- AI COPILOT -->
-      <section id="ai" class="panel hidden">
-        <article class="card ai-card">
-          <div class="section-heading compact">
-            <div><p class="eyebrow">Intelligence</p><h2>OneSync Copilot</h2></div>
-            <span class="chip">local AI · <span id="aiModel">…</span></span>
-          </div>
-          <div id="aiThread" class="ai-thread">
-            <div class="ai-msg bot">Hi — I can see your live Odoo margins. Ask me anything, like the ones below.</div>
-          </div>
-          <div class="ai-chips" id="aiChips"></div>
-          <form id="aiForm" class="ai-input">
-            <input id="aiQ" placeholder="e.g. Which 5 items lose the most money?" autocomplete="off" />
-            <button class="btn btn-primary" id="aiSend" type="submit">Ask</button>
-          </form>
-        </article>
-      </section>
-
-      <!-- RECOMMENDATIONS (v2 prescriptive engine) -->
-      <section id="recs" class="panel hidden">
-        <section class="rec-headline" id="recHeadline"></section>
-        <div class="rec-filter" id="recFilter"></div>
-        <div class="rec-list" id="recList"></div>
-      </section>
-    </main>
   </div>
-</div>
+</header>
 
-<footer class="app-foot"><span id="footMeta"></span><span>OneSync — see your real margins before they cost you. Demo · live Odoo, read-only.</span></footer>
-<script src="app.js"></script>
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="lang-en" lang="en">
+          <h1>One Place. Everything Synced.</h1>
+          <p class="lead">OneSync gives every business one place where all its systems, people, and numbers stay in sync — in Arabic and English, built for Saudi Arabia first.</p>
+          <div class="cta-row">
+            <a class="btn btn-action" href="#contact">Get in touch</a>
+            <a class="btn btn-quiet" href="demo.html">See it in action →</a>
+          </div>
+        </div>
+        <div class="lang-ar" lang="ar" dir="rtl">
+          <h1>مكان واحد. كل شيء متزامن.</h1>
+          <p class="lead">منصّة ون سينك تمنح كل شركة مكانًا واحدًا تبقى فيه جميع أنظمتها وأشخاصها وأرقامها متزامنة، بالعربية والإنجليزية، وهي مبنية لخدمة السعودية أولًا.</p>
+          <div class="cta-row">
+            <a class="btn btn-action" href="#contact">تواصل معنا</a>
+            <a class="btn btn-quiet" href="demo.html">شاهدها عمليًا ←</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div>
+          <svg class="hero-mark" viewBox="0 0 96 96" role="img" aria-label="OneSync">
+            <g stroke="#2C74BA" stroke-width="3.4" fill="none">
+              <path class="ray" d="M48 48V20"></path>
+              <path class="ray" d="M48 48l19.8-19.8"></path>
+              <path class="ray" d="M48 48h28"></path>
+              <path class="ray" d="M48 48v28"></path>
+              <path class="ray" d="M48 48L28.2 67.8"></path>
+              <path class="ray" d="M48 48H20"></path>
+              <path class="ray" d="M48 48L28.2 28.2"></path>
+            </g>
+            <path class="ray ray-action" d="M48 48l19.8 19.8" stroke="#F37021" stroke-width="4" fill="none"></path>
+            <circle class="core-outer" cx="48" cy="48" r="16.2" fill="#ffffff"></circle>
+            <circle class="core-inner" cx="48" cy="48" r="12.6" fill="#2C74BA"></circle>
+            <circle class="dot" cx="48" cy="20" r="4.4" fill="#2C74BA"></circle>
+            <circle class="dot" cx="67.8" cy="28.2" r="4.4" fill="#2C74BA"></circle>
+            <circle class="dot" cx="76" cy="48" r="4.4" fill="#2C74BA"></circle>
+            <circle class="dot" cx="48" cy="76" r="4.4" fill="#2C74BA"></circle>
+            <circle class="dot" cx="28.2" cy="67.8" r="4.4" fill="#2C74BA"></circle>
+            <circle class="dot" cx="20" cy="48" r="4.4" fill="#2C74BA"></circle>
+            <circle class="dot" cx="28.2" cy="28.2" r="4.4" fill="#2C74BA"></circle>
+            <circle class="dot" cx="67.8" cy="67.8" r="4.8" fill="#F37021"></circle>
+          </svg>
+          <p class="mark-caption lang-en" lang="en">Our mark is a sun: one center, everything in orbit — nothing lost in the dark.</p>
+          <p class="mark-caption lang-ar" lang="ar" dir="rtl">شعارنا شمس: مركز واحد يدور حوله كل شيء في مدار واحد، لا شيء يضيع في الظلام.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OFFERINGS ============ -->
+  <section id="offerings" class="section band">
+    <div class="section-inner">
+      <div class="lang-en" lang="en">
+        <p class="eyebrow">What it does</p>
+        <h2>One login. Every part of the business.</h2>
+        <p class="lead" style="font-size:var(--text-lg); max-width:60ch;">OneSync syncs a business's systems into one place — ERP, CRM, HR, finance, operations, governance, documents, and AI workflows — instead of juggling separate apps.</p>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>One platform</h3>
+            <p>One codebase, one design, one login for the whole business — not apps stitched together.</p>
+          </article>
+          <article class="card">
+            <h3>OneSync AI</h3>
+            <p>Reads the business and finds the money — the AI CFO that ranks profit leaks in riyals. Built today.</p>
+          </article>
+          <article class="card">
+            <h3>Proof in a real business</h3>
+            <p>A multi-branch Saudi restaurant group runs OneSync today — 40+ working modules, from kitchen temperature checks to CFO-level finance.</p>
+            <a class="card-link" href="demo.html">See it in action →</a>
+          </article>
+        </div>
+
+        <p class="roadmap-note"><strong>Roadmap:</strong> next, weighing the physical kitchen so the system knows what really happened — not just what the ERP says. Later, research into no-camera, sound-based kitchen sensing.</p>
+      </div>
+
+      <div class="lang-ar" lang="ar" dir="rtl">
+        <p class="eyebrow">ماذا نقدّم</p>
+        <h2>تسجيل دخول واحد. كل جزء من عملك.</h2>
+        <p class="lead" style="font-size:var(--text-lg); max-width:60ch;">تُزامن ون سينك كل أنظمة شركتك في مكان واحد: تخطيط الموارد (ERP)، إدارة العملاء (CRM)، الموارد البشرية، المالية، العمليات، الحوكمة، المستندات، ومهام الذكاء الاصطناعي، بدل التنقّل بين تطبيقات متفرقة.</p>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>منصّة واحدة</h3>
+            <p>كود واحد، وتصميم واحد، وتسجيل دخول واحد لكل الشركة، لا تطبيقات مبعثرة ومُلصقة ببعضها.</p>
+          </article>
+          <article class="card">
+            <h3><span class="embed" dir="ltr">OneSync AI</span></h3>
+            <p>يقرأ بيانات العمل ويكتشف مواضع الربح الضائع؛ المدير المالي الذكي الذي يرتّب تسريبات الهامش بالريال. متاح اليوم.</p>
+          </article>
+          <article class="card">
+            <h3>دليل من عمل حقيقي</h3>
+            <p>مجموعة مطاعم سعودية متعددة الفروع تعمل على ون سينك اليوم: أكثر من 40 وحدة عاملة، من فحوصات حرارة المطبخ حتى المالية على مستوى المدير المالي.</p>
+            <a class="card-link" href="demo.html">شاهدها عمليًا ←</a>
+          </article>
+        </div>
+
+        <p class="roadmap-note"><strong>خارطة الطريق:</strong> القادم هو قياس وزن ما يحدث فعليًا في المطبخ ليعرف النظام ما حدث بالضبط، لا ما يقوله نظام تخطيط الموارد فقط. لاحقًا: أبحاث في استشعار المطبخ عبر الصوت دون كاميرات.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIFFERENTIATION ============ -->
+  <section id="differentiation" class="section">
+    <div class="section-inner">
+      <div class="lang-en" lang="en">
+        <p class="eyebrow">Why OneSync</p>
+        <h2 class="position-line">Cleaner than Odoo. Simpler than Notion. More integrated than Zoho One.</h2>
+
+        <ol class="diff-list">
+          <li><span class="diff-num">1</span><div><h3>One codebase, one design, one login</h3><p>Not many apps stitched together.</p></div></li>
+          <li><span class="diff-num">2</span><div><h3>Arabic and English as equals</h3><p>Right-to-left done properly, Saudi specifics built in: 15% VAT, SAR, local workflows.</p></div></li>
+          <li><span class="diff-num">3</span><div><h3>Governance in the bones</h3><p>Approvals, audit trail, access reviews.</p></div></li>
+          <li><span class="diff-num">4</span><div><h3>AI inside the platform</h3><p>Ask AI, document reading (OCR), insights — not bolted on.</p></div></li>
+          <li><span class="diff-num">5</span><div><h3>Deep in its first industry: restaurants</h3><p>Kitchen, waste, cash close, food safety — proof it goes deeper than generic suites.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="lang-ar" lang="ar" dir="rtl">
+        <p class="eyebrow">لماذا ون سينك</p>
+        <h2 class="position-line">أنظف من <span class="embed" dir="ltr">Odoo</span>، أبسط من <span class="embed" dir="ltr">Notion</span>، وأكثر تكاملًا من <span class="embed" dir="ltr">Zoho One</span>.</h2>
+
+        <ol class="diff-list">
+          <li><span class="diff-num">1</span><div><h3>كود واحد، تصميم واحد، تسجيل دخول واحد</h3><p>لا تطبيقات متعددة مُلصقة ببعضها.</p></div></li>
+          <li><span class="diff-num">2</span><div><h3>العربية والإنجليزية بمستوى واحد</h3><p>دعم صحيح وكامل للكتابة من اليمين إلى اليسار، وخصائص سعودية مدمجة: ضريبة القيمة المضافة 15%، الريال السعودي، وطرق العمل المحلية.</p></div></li>
+          <li><span class="diff-num">3</span><div><h3>الحوكمة جزء من بنية النظام</h3><p>الاعتمادات، وسجل التدقيق، ومراجعات الصلاحيات.</p></div></li>
+          <li><span class="diff-num">4</span><div><h3>الذكاء الاصطناعي داخل المنصّة</h3><p>اسأل الذكاء الاصطناعي، وقراءة المستندات (OCR)، والرؤى التحليلية؛ لا إضافة خارجية.</p></div></li>
+          <li><span class="diff-num">5</span><div><h3>عمق حقيقي في أول قطاع: المطاعم</h3><p>المطبخ، والهدر، وإقفال الصندوق، وسلامة الغذاء؛ دليل أنها أعمق من الأنظمة العامة.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / CTA ============ -->
+  <section id="contact" class="section band cta-section">
+    <div class="section-inner">
+      <div class="lang-en" lang="en">
+        <h2>Ready to bring your business into one place?</h2>
+        <p class="lead" style="font-size:var(--text-lg);">Tell us about your business — we'll show you what OneSync can sync.</p>
+        <div class="cta-row">
+          <a class="btn btn-action" href="mailto:hello@onesyncsa.com">Get in touch</a>
+          <a class="btn btn-quiet" href="demo.html">See it in action →</a>
+        </div>
+        <p class="contact-meta">Built in Riyadh, for Saudi Arabia. <a href="mailto:hello@onesyncsa.com">hello@onesyncsa.com</a></p>
+      </div>
+      <div class="lang-ar" lang="ar" dir="rtl">
+        <h2>جاهز لجمع عملك في مكان واحد؟</h2>
+        <p class="lead" style="font-size:var(--text-lg);">أخبرنا عن عملك، وسنريك ما الذي يمكن لون سينك أن يُزامنه.</p>
+        <div class="cta-row">
+          <a class="btn btn-action" href="mailto:hello@onesyncsa.com">تواصل معنا</a>
+          <a class="btn btn-quiet" href="demo.html">شاهدها عمليًا ←</a>
+        </div>
+        <p class="contact-meta">بُنيت في الرياض، للسعودية. <a href="mailto:hello@onesyncsa.com" dir="ltr">hello@onesyncsa.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="mark" viewBox="0 0 96 96" role="img" aria-hidden="true">
+        <circle cx="48" cy="48" r="16.2" fill="#ffffff"></circle>
+        <circle cx="48" cy="48" r="12.6" fill="#2C74BA"></circle>
+        <circle cx="67.8" cy="67.8" r="4.8" fill="#F37021"></circle>
+      </svg>
+      <span class="lang-en" lang="en">OneSync — One Place. Everything Synced.</span>
+      <span class="lang-ar" lang="ar" dir="rtl">ون سينك — مكان واحد. كل شيء متزامن.</span>
+    </div>
+    <p class="footer-meta lang-en" lang="en">© 2026 OneSync. Draft for internal review — not yet published.</p>
+    <p class="footer-meta lang-ar" lang="ar" dir="rtl">© 2026 ون سينك (<span class="embed" dir="ltr">OneSync</span>). مسودة للمراجعة الداخلية، لم تُنشر بعد.</p>
+    <div class="footer-links">
+      <a href="demo.html" class="lang-en" lang="en">See it in action</a>
+      <a href="demo.html" class="lang-ar" lang="ar" dir="rtl">شاهدها عمليًا</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var body = document.body;
+    var root = document.documentElement;
+    var btn = document.getElementById('langToggle');
+
+    function setLang(lang) {
+      body.setAttribute('data-lang', lang);
+      if (lang === 'ar') {
+        root.setAttribute('lang', 'ar');
+        root.setAttribute('dir', 'rtl');
+        btn.textContent = 'English';
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        root.setAttribute('lang', 'en');
+        root.setAttribute('dir', 'ltr');
+        btn.textContent = 'العربية';
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    btn.addEventListener('click', function () {
+      var current = body.getAttribute('data-lang') || 'en';
+      setLang(current === 'en' ? 'ar' : 'en');
+    });
+  })();
+</script>
 </body>
 </html>
