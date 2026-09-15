@@ -1,0 +1,17 @@
+# onesyncsa.com - crawler policy (published 2026-09-15)
+# The website is two pages: the homepage and the demo walkthrough.
+# Search engines are welcome on those. Everything else in this folder is
+# supporting or leftover material and should not be crawled or indexed.
+#
+# Note: robots.txt is a request to well-behaved crawlers, not access control.
+
+User-agent: *
+Allow: /
+
+# Data, script and stylesheet files that no page uses.
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /css/
+
+Sitemap: https://onesyncsa.com/sitemap.xml
